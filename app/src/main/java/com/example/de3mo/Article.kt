@@ -5,10 +5,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -19,10 +25,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.de3mo.ui.theme.De3moTheme
 
-class Navigation : ComponentActivity() {
+class Article : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,14 +40,14 @@ class Navigation : ComponentActivity() {
             De3moTheme {
                 Scaffold(modifier = Modifier.fillMaxSize(),
                     topBar ={ TopAppBar(
-                        title = {Text(text = "Accueil")},
+                        title = {Text(text = "Article")},
                         colors = TopAppBarDefaults.topAppBarColors(
                             containerColor = MaterialTheme.colorScheme.primaryContainer,
                             titleContentColor = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                     )}
-                    ) { innerPadding ->
-                    Greeting3(
+                ) { innerPadding ->
+                    Greeting5(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -49,31 +58,31 @@ class Navigation : ComponentActivity() {
 }
 
 @Composable
-fun Greeting3(name: String, modifier: Modifier = Modifier) {
-    Column(
-        modifier= modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+fun Greeting5(name: String, modifier: Modifier = Modifier ) {
+    Box(
+        modifier= modifier
+            .fillMaxSize(),
+        contentAlignment = Alignment.Center,
+
     ){
         Button(
+            modifier = Modifier.align (Alignment.BottomCenter )
+                .size(width = 300.dp, height = 70.dp),
             onClick = {},
-            modifier = Modifier
+
         ) {
-            Text(text ="ARTICLE" )
-        }
-        Button(
-            onClick = {},
-            modifier = Modifier
-        ) {
-            Text(text ="CONTACT" )
+            Text(
+                text ="CONTACT"
+                , fontSize = 25.sp
+            )
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview3() {
+fun GreetingPreview5() {
     De3moTheme {
-        Greeting("Android")
+        Greeting5("Android")
     }
 }
